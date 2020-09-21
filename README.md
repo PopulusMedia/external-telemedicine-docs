@@ -12,8 +12,8 @@ Populus maintains a REST API with endpoints available for our telemedicine partn
     - [event](#event)
       - [Consult concluded](#consult-concluded)
       - [Consult canceled](#consult-canceled)
-      - [RX:WRITTEN](#rx:written)
-      - [RX:FULFILLED](#rx:fulfilled)
+      - [Rx written](#rx-written)
+      - [Rx fulfilled](#rx-fulfilled)
 
 ## What you will need
 
@@ -153,7 +153,7 @@ The `TELEMEDICINE:CONSULT_CANCELED` event should be called whenever a consult ha
     }'
   ```
 
-### RX:WRITTEN
+### Rx written
 
 The `RX:WRITTEN` event should be called whenever a prescription is written by a health care provider.
 
@@ -206,7 +206,7 @@ The `RX:WRITTEN` event should be called whenever a prescription is written by a 
     }'
   ```
 
-### RX:FULFILLED
+### Rx fulfilled
 
 The `RX:FULFILLED` event should be called whenever a prescription is fulfilled by a pharmacy.
 
