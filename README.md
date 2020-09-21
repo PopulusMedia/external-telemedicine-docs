@@ -10,8 +10,8 @@ Populus maintains a REST API with endpoints available for our telemedicine partn
     - [Base URLs](#base-urls)
   - [Endpoints](#endpoints)
     - [event](#event)
-      - [TELEMEDICINE:CONSULT_CONCLUDED](#telemedicine:consult_concluded)
-      - [TELEMEDICINE:CONSULT_CANCELED](#telemedicine:consult_canceled)
+      - [Consult concluded](#consult-concluded)
+      - [Consult canceled](#consult-canceled)
       - [RX:WRITTEN](#rx:written)
       - [RX:FULFILLED](#rx:fulfilled)
 
@@ -77,7 +77,7 @@ For `event_name`, the following events are allowed:
   RX:FULFILLED
 ```
 
-### TELEMEDICINE:CONSULT_CONCLUDED
+### Consult concluded
 
 The `TELEMEDICINE:CONSULT_CONCLUDED` event should be called whenever a consult has been completed.
 
@@ -115,7 +115,7 @@ The `TELEMEDICINE:CONSULT_CONCLUDED` event should be called whenever a consult h
     }'
   ```
 
-### TELEMEDICINE:CONSULT_CANCELED
+### Consult canceled
 
 The `TELEMEDICINE:CONSULT_CANCELED` event should be called whenever a consult has been canceled.
 
