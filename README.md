@@ -241,7 +241,7 @@ The `RX:FULFILLED` event should be called whenever a prescription is fulfilled b
 
   `engagement_id: String`
 
-  `event_name: String` Pass the event name: TELEMEDICINE:CONSULT_CANCELED
+  `event_name: String` Pass the event name: RX:FULFILLED
 
   `rx_name: String`
 
