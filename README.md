@@ -77,6 +77,17 @@ For `event_name`, the following events are allowed:
   RX:FULFILLED
 ```
 
+The response will look like the following:
+
+```
+{
+  ok: boolean,
+  error: string | null
+}
+```
+
+If the request was successful, `ok` will be true and `error` will be null. If the request was not successful, `ok` will be false and `error` will be a string with some contextual information.
+
 ### Consult concluded
 
 The `TELEMEDICINE:CONSULT_CONCLUDED` event should be called whenever a consult has been completed.
@@ -177,7 +188,7 @@ The `RX:WRITTEN` event should be called whenever a prescription is written by a 
 
   `engagement_id: String`
 
-  `event_name: String` Pass the event name: TELEMEDICINE:CONSULT_CANCELED
+  `event_name: String` Pass the event name: RX:WRITTEN
 
   `rx_name: String`
 
