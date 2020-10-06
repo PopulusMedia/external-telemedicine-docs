@@ -94,7 +94,7 @@ The `TELEMEDICINE:CONSULT_CONCLUDED` event should be called whenever a consult h
 
 - **URL**
 
-  BASE_URL/external/event
+  BASE_URL/event
 
 - **Method**
 
@@ -132,7 +132,7 @@ The `TELEMEDICINE:CONSULT_CANCELED` event should be called whenever a consult ha
 
 - **URL**
 
-  BASE_URL/external/event
+  BASE_URL/event
 
 - **Method**
 
@@ -170,7 +170,7 @@ The `RX:WRITTEN` event should be called whenever a prescription is written by a 
 
 - **URL**
 
-  BASE_URL/external/event
+  BASE_URL/event
 
 - **Method**
 
@@ -223,7 +223,7 @@ The `RX:FULFILLED` event should be called whenever a prescription is fulfilled b
 
 - **URL**
 
-  BASE_URL/external/event
+  BASE_URL/event
 
 - **Method**
 
