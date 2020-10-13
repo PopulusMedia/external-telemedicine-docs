@@ -72,11 +72,11 @@ Each request to the `BASE_URL/event` endpoint requires the following in the body
 For `event_name`, the following events are allowed:
 
 ```
+  TELEMEDICINE:CONSULT_CREATED
   TELEMEDICINE:CONSULT_CONCLUDED
   TELEMEDICINE:CONSULT_CANCELED
   RX:WRITTEN
   RX:FULFILLED
-  TELEMEDICINE:CONSULT_CREATED
 ```
 
 The response will look like the following:
