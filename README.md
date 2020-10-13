@@ -10,6 +10,7 @@ Populus maintains a REST API with endpoints available for our telemedicine partn
     - [Base URLs](#base-urls)
   - [Endpoints](#endpoints)
     - [event](#event)
+      - [Consult created](#consult-created)
       - [Consult concluded](#consult-concluded)
       - [Consult canceled](#consult-canceled)
       - [Rx written](#rx-written)
@@ -75,6 +76,7 @@ For `event_name`, the following events are allowed:
   TELEMEDICINE:CONSULT_CANCELED
   RX:WRITTEN
   RX:FULFILLED
+  TELEMEDICINE:CONSULT_CREATED
 ```
 
 The response will look like the following:
@@ -87,6 +89,46 @@ The response will look like the following:
 ```
 
 If the request was successful, `ok` will be true and `error` will be null. If the request was not successful, `ok` will be false and `error` will be a string with some contextual information.
+
+### Consult created
+
+The `TELEMEDICINE:CONSULT_CREATED` event should be called whenever a consult has been paid for and successfully created.
+
+**This endpoint is restricted to certain partners.**
+
+- **URL**
+
+  BASE_URL/event
+
+- **Method**
+
+  `POST`
+
+- **Headers**
+
+  `apikey: YOUR_API_KEY`
+
+- **URL Params**
+
+  **Required:**
+
+  `master_id: String`
+
+  `engagement_id: String`
+
+  `event_name: String` Pass the event name: TELEMEDICINE:CONSULT_CREATED
+
+- **Sample Call:**
+
+  ```
+  curl --location --request POST 'https://telemedicine.populus-media.net/dev/external/event' \
+    --header 'apikey: YOUR_API_KEY' \
+    --data-raw '{
+        "master_id": "abcd-1234",
+        "engagement_id": "efgh-5678",
+        "event_name": "TELEMEDICINE:CONSULT_CREATED"
+    }'
+  ```
 
 ### Consult concluded
 
