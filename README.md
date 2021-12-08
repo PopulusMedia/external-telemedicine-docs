@@ -30,10 +30,19 @@ For each request, provide the following parameters in the body of the request:
 
 ```javascript
 {
-  master_id: string; // Master ID of user, which you received from us via our API request(s) to you
-  engagement_id: string; // Engagement ID of user, which you received from us via our API request(s) to you
+  master_id: string, // Master ID of user, which you received from us via our API request(s) to you (if applicable)
+  engagement_id: string, // Engagement ID of user, which you received from us via our API request(s) to you (if applicable)
+  visit_id: string // Visit ID of the user, which is generated within the popcorn library.
 }
 ```
+
+### When to pass which ID(s)
+
+If Populus sends you patients to receive medical treatment, you would pass the `master_id` and `engagement_id` only.
+
+If Populus **does not** send you patients for medical treatment, but you present ads on your platform that are provided by Populus via the popcorn library, you would pass the `visit_id` only.
+
+If Populus sends you patients for medical treatment, **and** you also present ads on your platform that are provided by Populus via the popcorn library, you would pass all three IDs: `master_id`, `engagement_id` and `visit_id`.
 
 ## Stages
 
@@ -63,9 +72,10 @@ Each request to the `BASE_URL/event` endpoint requires the following in the body
 
 ```javascript
 {
-  master_id: string; // Master ID of user, which you received from us via our API request(s) to you
-  engagement_id: string; // Engagement ID of user, which you received from us via our API request(s) to you
-  event_name: string; // Predefined event name, available below
+  master_id: string, // Master ID of user, which you received from us via our API request(s) to you
+  engagement_id: string, // Engagement ID of user, which you received from us via our API request(s) to you
+  visit_id: string, // The Visit ID of the user, which is generated within the popcorn library.
+  event_name: string // Predefined event name, available below
 }
 ```
 
@@ -112,9 +122,11 @@ The `TELEMEDICINE:CONSULT_CREATED` event should be called whenever a consult has
 
   **Required:**
 
-  `master_id: String`
+  `master_id: String` Required if Populus sends you patients
 
-  `engagement_id: String`
+  `engagement_id: String` Required if Populus sends you patients
+
+  `visit_id: String` Required if you use the popcorn library
 
   `event_name: String` Pass the event name: TELEMEDICINE:CONSULT_CREATED
 
@@ -126,6 +138,7 @@ The `TELEMEDICINE:CONSULT_CREATED` event should be called whenever a consult has
     --data-raw '{
         "master_id": "abcd-1234",
         "engagement_id": "efgh-5678",
+        "visit_id": "ijkl-9012",
         "event_name": "TELEMEDICINE:CONSULT_CREATED"
     }'
   ```
@@ -150,9 +163,11 @@ The `TELEMEDICINE:CONSULT_CONCLUDED` event should be called whenever a consult h
 
   **Required:**
 
-  `master_id: String`
+  `master_id: String` Required if Populus sends you patients
 
-  `engagement_id: String`
+  `engagement_id: String` Required if Populus sends you patients
+  
+  `visit_id: String` Required if you use the popcorn library
 
   `event_name: String` Pass the event name: TELEMEDICINE:CONSULT_CONCLUDED
 
@@ -164,6 +179,7 @@ The `TELEMEDICINE:CONSULT_CONCLUDED` event should be called whenever a consult h
     --data-raw '{
         "master_id": "abcd-1234",
         "engagement_id": "efgh-5678",
+        "visit_id": "ijkl-9012",
         "event_name": "TELEMEDICINE:CONSULT_CONCLUDED"
     }'
   ```
@@ -188,9 +204,11 @@ The `TELEMEDICINE:CONSULT_CANCELED` event should be called whenever a consult ha
 
   **Required:**
 
-  `master_id: String`
+  `master_id: String` Required if Populus sends you patients
 
-  `engagement_id: String`
+  `engagement_id: String` Required if Populus sends you patients
+
+  `visit_id: String` Required if you use the popcorn library
 
   `event_name: String` Pass the event name: TELEMEDICINE:CONSULT_CANCELED
 
@@ -202,6 +220,7 @@ The `TELEMEDICINE:CONSULT_CANCELED` event should be called whenever a consult ha
     --data-raw '{
         "master_id": "abcd-1234",
         "engagement_id": "efgh-5678",
+        "visit_id": "ijkl-9012",
         "event_name": "TELEMEDICINE:CONSULT_CANCELED"
     }'
   ```
@@ -226,9 +245,11 @@ The `RX:WRITTEN` event should be called whenever a prescription is written by a 
 
   **Required:**
 
-  `master_id: String`
+  `master_id: String` Required if Populus sends you patients
 
-  `engagement_id: String`
+  `engagement_id: String` Required if Populus sends you patients
+
+  `visit_id: String` Required if you use the popcorn library
 
   `event_name: String` Pass the event name: RX:WRITTEN
 
@@ -251,6 +272,7 @@ The `RX:WRITTEN` event should be called whenever a prescription is written by a 
     --data-raw '{
         "master_id": "abcd-1234",
         "engagement_id": "efgh-5678",
+        "visit_id": "ijkl-9012",
         "event_name": "RX:WRITTEN",
         "rx_name": "Zetrello",
         "pharmacy_name": "KnippeRx",
@@ -279,9 +301,11 @@ The `RX:FULFILLED` event should be called whenever a prescription is fulfilled b
 
   **Required:**
 
-  `master_id: String`
+  `master_id: String` Required if Populus sends you patients
 
-  `engagement_id: String`
+  `engagement_id: String` Required if Populus sends you patients
+
+  `visit_id: String` Required if you use the popcorn library
 
   `event_name: String` Pass the event name: RX:FULFILLED
 
@@ -304,6 +328,7 @@ The `RX:FULFILLED` event should be called whenever a prescription is fulfilled b
     --data-raw '{
         "master_id": "abcd-1234",
         "engagement_id": "efgh-5678",
+        "visit_id": "ijkl-9012",
         "event_name": "RX:FULFILLED",
         "rx_name": "Zetrello",
         "pharmacy_name": "KnippeRx",
