@@ -32,7 +32,7 @@ For each request, provide the following parameters in the body of the request:
 {
   master_id: string, // Master ID of user, which you received from us via our API request(s) to you (if applicable)
   engagement_id: string, // Engagement ID of user, which you received from us via our API request(s) to you (if applicable)
-  visit_id: string // Visit ID of the user, which is generated within the popcorn library.
+  visit_id: string // Visit ID of the user, which is generated within the Populus Media library.
 }
 ```
 
@@ -40,9 +40,9 @@ For each request, provide the following parameters in the body of the request:
 
 If Populus sends you patients to receive medical treatment, you would pass the `master_id` and `engagement_id` only.
 
-If Populus **does not** send you patients for medical treatment, but you present ads on your platform that are provided by Populus via the popcorn library, you would pass the `visit_id` only.
+If Populus **does not** send you patients for medical treatment, but you present ads on your platform that are provided by Populus via the Populus Media library, you would pass the `visit_id` only.
 
-If Populus sends you patients for medical treatment, **and** you also present ads on your platform that are provided by Populus via the popcorn library, you would pass all three IDs: `master_id`, `engagement_id` and `visit_id`.
+If Populus sends you patients for medical treatment, **and** you also present ads on your platform that are provided by Populus via the Populus Media library, you would pass all three IDs: `master_id`, `engagement_id` and `visit_id`.
 
 ## Stages
 
@@ -74,7 +74,7 @@ Each request to the `BASE_URL/event` endpoint requires the following in the body
 {
   master_id: string, // Master ID of user, which you received from us via our API request(s) to you
   engagement_id: string, // Engagement ID of user, which you received from us via our API request(s) to you
-  visit_id: string, // The Visit ID of the user, which is generated within the popcorn library.
+  visit_id: string, // The Visit ID of the user, which is generated within the Populus Media library.
   event_name: string // Predefined event name, available below
 }
 ```
@@ -126,7 +126,7 @@ The `TELEMEDICINE:CONSULT_CREATED` event should be called whenever a consult has
 
   `engagement_id: String` Required if Populus sends you patients
 
-  `visit_id: String` Required if you use the popcorn library
+  `visit_id: String` Required if you use the Populus Media library
 
   `event_name: String` Pass the event name: TELEMEDICINE:CONSULT_CREATED
 
@@ -167,9 +167,19 @@ The `TELEMEDICINE:CONSULT_CONCLUDED` event should be called whenever a consult h
 
   `engagement_id: String` Required if Populus sends you patients
   
-  `visit_id: String` Required if you use the popcorn library
+  `visit_id: String` Required if you use the Populus Media library
 
   `event_name: String` Pass the event name: TELEMEDICINE:CONSULT_CONCLUDED
+
+  **Optional:**
+
+  `npi_number: String` The NPI number of the consulting physician
+
+  `language: String` ISO 639-1, e.g. `en`. The language spoken during the consultation.
+
+  `specialty: String` The consulting physician's specialty
+
+  `zip_code: String` 5 digits. The patient's zip code. 
 
 - **Sample Call:**
 
@@ -208,7 +218,7 @@ The `TELEMEDICINE:CONSULT_CANCELED` event should be called whenever a consult ha
 
   `engagement_id: String` Required if Populus sends you patients
 
-  `visit_id: String` Required if you use the popcorn library
+  `visit_id: String` Required if you use the Populus Media library
 
   `event_name: String` Pass the event name: TELEMEDICINE:CONSULT_CANCELED
 
@@ -249,7 +259,7 @@ The `RX:WRITTEN` event should be called whenever a prescription is written by a 
 
   `engagement_id: String` Required if Populus sends you patients
 
-  `visit_id: String` Required if you use the popcorn library
+  `visit_id: String` Required if you use the Populus Media library
 
   `event_name: String` Pass the event name: RX:WRITTEN
 
@@ -305,7 +315,7 @@ The `RX:FULFILLED` event should be called whenever a prescription is fulfilled b
 
   `engagement_id: String` Required if Populus sends you patients
 
-  `visit_id: String` Required if you use the popcorn library
+  `visit_id: String` Required if you use the Populus Media library
 
   `event_name: String` Pass the event name: RX:FULFILLED
 
